@@ -85,12 +85,14 @@ Run Command: Starts NGINX with the custom configuration.
 
 # 1. Initialize an Elastic Beanstalk application:
 
-```eb init -p docker web-game-eb
+```
+eb init -p docker web-game-eb
 ```
 
 # 2. Create an environment and deploy the container:
 
-```eb create web-game-env
+```
+eb create web-game-env
 eb deploy
 ```
 
