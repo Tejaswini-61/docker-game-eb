@@ -39,3 +39,15 @@ Before you begin, ensure you have the following installed:
 git clone https://github.com/Tejaswini-61/docker-game-eb.git
 cd docker-game-eb
 ```
+
+# 2. Build the Docker image
+
+```
+docker build -t web-game .
+```
+
+```-t web-game``` tags the image with the name "web-game".
+
+The build process updates Ubuntu packages, installs required tools, sets up NGINX, and downloads the game files.
+
+
