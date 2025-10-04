@@ -50,4 +50,52 @@ docker build -t web-game .
 
 The build process updates Ubuntu packages, installs required tools, sets up NGINX, and downloads the game files.
 
+# 3. Run the Docker container
 
+```docker run -p 8080:80 web-game
+```
+
+```-p 8080:80 ``` maps the container’s port 80 to your machine’s port 8080.
+
+The container starts NGINX and serves the game.
+
+# 4. Open the game in your browser
+
+Go to: http://localhost:8080
+
+You should see the game ready to play.
+
+## Dockerfile Explanation
+
+Here’s what the Dockerfile does, step by step:
+
+Base Image: Uses ubuntu:22.04 for a clean Linux environment.
+
+Package Installation: Installs nginx, zip, and curl.
+
+NGINX Configuration: Appends daemon off; to keep NGINX running in the foreground inside the container.
+
+Download Game: Uses curl to fetch the 2048 game files from GitHub and unzips them into /var/www/html.
+
+Expose Port: Opens port 80 for web traffic.
+
+Run Command: Starts NGINX with the custom configuration.
+
+## Deployment to AWS Elastic Beanstalk
+
+# 1. Initialize an Elastic Beanstalk application:
+
+```eb init -p docker web-game-eb
+```
+
+# 2. Create an environment and deploy the container:
+
+```eb create web-game-env
+eb deploy
+```
+
+# 3. Open the deployed application:
+```
+eb open
+```
+AWS Elastic Beanstalk will automatically provision an environment, host your Docker container, and give you a public URL.
